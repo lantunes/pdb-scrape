@@ -3,8 +3,7 @@ Get all PDB files:
 ```
 wget ftp://ftp.wwpdb.org/pub/pdb/data/structures/all/pdb/*
 ```
-* there are many files
--- ~158 Mb for ~1400 files
+* there are 167,570 files (33 Gigabytes) (as of Sep 25, 2020)
 
 
 Convert pdb file to DSSP file, which contains phi and psi for each residue for each chain:
