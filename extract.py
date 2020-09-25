@@ -38,14 +38,15 @@ if __name__ == '__main__':
             phi_psis = []
             dihedrals = []
             chains = []
+            chain_names = []
             # we assume that the chains and residues are in order, i.e. A1,A2,A3,...,B1,B2,B3,...
             for key in dssp.keys():
 
                 chain_id = key[0]
-                residue_id = key[1][1]
 
                 if not current_chain or chain_id != current_chain:
                     current_chain = chain_id
+                    chain_names.append(chain_id)
                     if chain:
                         assert len(chain) == len(phi_psis), \
                             "the length of chain '%s' does not equal the number of dihedrals: %s" % (chain, len(phi_psis))
@@ -54,7 +55,7 @@ if __name__ == '__main__':
                     chain = ""
                     phi_psis = []
 
-                residue = dssp[(chain_id, residue_id)]
+                residue = dssp[key]
                 amino_acid = residue[1]
                 assert amino_acid in valid_aa, "unsupported amino acid: %s" % amino_acid
                 phi = residue[4]
@@ -73,4 +74,5 @@ if __name__ == '__main__':
 
             print(chains)
             print(dihedrals)
+            print(chain_names)
             print()
